@@ -1,0 +1,76 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Cell Structure Quiz</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #f0f0f0; padding: 20px; }
+    h2 { color: #2a5d9f; }
+    .question { margin: 20px 0; padding: 15px; background: white; border-radius: 8px; }
+    .options button {
+      display: block;
+      margin: 8px 0;
+      padding: 10px;
+      width: 100%;
+      background: #ddd;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      text-align: left;
+    }
+    .options button.correct { background: #c8e6c9; }
+    .options button.wrong { background: #ffcdd2; }
+    .explanation { margin-top: 8px; color: #555; display: none; }
+  </style>
+</head>
+<body>
+  <h2>Quiz on "Cell Structure I – Nucleus"</h2>
+
+  <div class="question" id="q1">
+    <p><strong>1. What organelle is referred to as the "control center" of the cell?</strong></p>
+    <div class="options">
+      <button data-correct="true">Nucleus</button>
+      <button data-correct="false">Mitochondria</button>
+      <button data-correct="false">Ribosome</button>
+      <button data-correct="false">Chloroplast</button>
+    </div>
+    <p class="explanation">✅ The nucleus stores the cell's DNA and regulates its activities.</p>
+  </div>
+
+  <div class="question" id="q2">
+    <p><strong>2. Which molecule is stored inside the nucleus?</strong></p>
+    <div class="options">
+      <button data-correct="false">RNA only</button>
+      <button data-correct="true">DNA</button>
+      <button data-correct="false">Protein</button>
+      <button data-correct="false">Lipid</button>
+    </div>
+    <p class="explanation">✅ The nucleus contains DNA, which holds genetic information.</p>
+  </div>
+
+  <div class="question" id="q3">
+    <p><strong>3. What is the primary function of the nucleus?</strong></p>
+    <div class="options">
+      <button data-correct="false">Produce ATP</button>
+      <button data-correct="false">Assist in protein folding</button>
+      <button data-correct="true">Control cell growth and reproduction</button>
+      <button data-correct="false">Carry out photosynthesis</button>
+    </div>
+    <p class="explanation">✅ The nucleus regulates cell growth, metabolism, and reproduction.</p>
+  </div>
+
+  <script>
+    document.querySelectorAll('.options button').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const opts = btn.parentNode.children;
+        for (let b of opts) {
+          b.disabled = true;
+          b.classList.add(b.dataset.correct === "true" ? 'correct' : 'wrong');
+        }
+        btn.parentNode.nextElementSibling.style.display = 'block';
+      });
+    });
+  </script>
+</body>
+</html>
